@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+body {
+  background: #F5F5F5;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #C0392B;
+}
+
+.nav-accent-bar {
+  height: 4px;
+  background: #FFD966;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 40px;
+  height: 60px;
+}
+
+.nav-logo {
+  font-size: 18px;
+  color: white;
+  white-space: nowrap;
+}
+
+.nav-logo span {
+  font-weight: 700;
+  color: #FFD966;
+}
+
+.nav-search {
+  flex: 1;
+  max-width: 400px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 7px 16px;
+  font-size: 13px;
+  color: white;
+  outline: none;
+}
+
+.nav-search::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.btn-cart {
+  background: rgba(255,217,102,0.15);
+  border: 1px solid #FFD966;
+  color: #FFD966;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-contacts {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-login {
+  background: #FFD966;
+  border: none;
+  color: #7B1A0E;
+  border-radius: 20px;
+  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}

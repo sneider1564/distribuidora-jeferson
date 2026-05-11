@@ -1,0 +1,126 @@
+<div class="login-layout">
+
+  <!-- PANEL IZQUIERDO -->
+  <div class="panel-izquierdo">
+    <p class="marca-label">Distribuidora Jeferson</p>
+    <div class="bienvenida">
+      <h1>Bienvenido a tu<br>tienda en línea</h1>
+      <p>Accede a tu cuenta para hacer pedidos, ver tu historial y gestionar tu información de manera rápida y segura.</p>
+    </div>
+    <div class="beneficios">
+      <div class="beneficio">
+        <div class="beneficio-icon">🛒</div>
+        <div>
+          <p>Compra productos por unidad desde cualquier lugar</p>
+        </div>
+      </div>
+      <div class="beneficio">
+        <div class="beneficio-icon">📋</div>
+        <div>
+          <p>Consulta tu historial y repite pedidos anteriores</p>
+        </div>
+      </div>
+      <div class="beneficio">
+        <div class="beneficio-icon">🚚</div>
+        <div>
+          <p>Recibe tus productos directo en tu negocio</p>
+        </div>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Distribuidora Jeferson</p>
+  </div>
+
+  <!-- PANEL DERECHO -->
+  <div class="panel-derecho">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab" [class.active]="tab() === 'login'" (click)="cambiarTab('login')">Iniciar sesión</button>
+      <button class="tab" [class.active]="tab() === 'registro'" (click)="cambiarTab('registro')">Crear cuenta</button>
+    </div>
+
+    <!-- Error -->
+    @if (error()) {
+      <div class="error-msg">{{ error() }}</div>
+    }
+
+    <!-- FORM LOGIN -->
+    @if (tab() === 'login') {
+      <div class="form">
+        <div class="field">
+          <label>Correo electrónico</label>
+          <div class="input-wrap">
+            <span class="input-icon">✉</span>
+            <input type="email" placeholder="correo@negocio.com" [(ngModel)]="loginData.correo"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Contraseña</label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input [type]="mostrarPassword() ? 'text' : 'password'" placeholder="••••••••" [(ngModel)]="loginData.password"/>
+            <span class="input-icon-right" (click)="togglePassword()">{{ mostrarPassword() ? '🙈' : '👁' }}</span>
+          </div>
+        </div>
+
+        <div class="forgot">
+          <span (click)="olvidoPassword()">¿Olvidaste tu contraseña?</span>
+        </div>
+
+        <button class="btn-primary" (click)="iniciarSesion()">Iniciar sesión</button>
+
+        <div class="divider">
+          <span></span><p>o continúa con</p><span></span>
+        </div>
+
+        <button class="btn-google">
+          <span>G</span> Continuar con Google
+        </button>
+
+        <p class="switch-tab">
+          ¿No tienes cuenta?
+          <span (click)="cambiarTab('registro')">Crear cuenta gratis</span>
+        </p>
+      </div>
+    }
+
+    <!-- FORM REGISTRO -->
+    @if (tab() === 'registro') {
+      <div class="form">
+        <div class="field">
+          <label>Nombre completo</label>
+          <div class="input-wrap">
+            <span class="input-icon">👤</span>
+            <input type="text" placeholder="Tu nombre" [(ngModel)]="registroData.nombre"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Correo electrónico</label>
+          <div class="input-wrap">
+            <span class="input-icon">✉</span>
+            <input type="email" placeholder="correo@negocio.com" [(ngModel)]="registroData.correo"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Contraseña</label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input [type]="mostrarPassword() ? 'text' : 'password'" placeholder="Mínimo 8 caracteres" [(ngModel)]="registroData.password"/>
+            <span class="input-icon-right" (click)="togglePassword()">{{ mostrarPassword() ? '🙈' : '👁' }}</span>
+          </div>
+        </div>
+
+        <button class="btn-accent" (click)="crearCuenta()">Crear cuenta gratis</button>
+
+        <p class="switch-tab">
+          ¿Ya tienes cuenta?
+          <span (click)="cambiarTab('login')">Iniciar sesión</span>
+        </p>
+      </div>
+    }
+
+  </div>
+</div>

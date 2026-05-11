@@ -1,0 +1,54 @@
+<div class="carrito-layout">
+
+  <!-- ITEMS -->
+  <div class="carrito-items">
+    <h2>Productos seleccionados</h2>
+
+    @if (carritoService.getItems().length === 0) {
+      <div class="carrito-vacio">
+        <span>🛒</span>
+        <p>Tu carrito está vacío</p>
+        <button routerLink="/catalogo" class="btn-ir-catalogo">Ver catálogo</button>
+      </div>
+    } @else {
+      @for (item of carritoService.getItems(); track item.producto.id) {
+        <div class="carrito-item">
+          <div class="item-img">{{ item.producto.emoji }}</div>
+          <div class="item-info">
+            <div class="item-nombre">{{ item.producto.nombre }}</div>
+            <div class="item-cantidad">Cantidad: {{ item.cantidad }} unidades</div>
+          </div>
+          <div class="item-precio">${{ item.producto.precio * item.cantidad | number }}</div>
+          <button class="btn-eliminar" (click)="carritoService.eliminar(item.producto.id)">✕</button>
+        </div>
+      }
+    }
+  </div>
+
+  <!-- RESUMEN -->
+  <div class="resumen-card">
+    <h3>Resumen de compra</h3>
+
+    <div class="resumen-row">
+      <span>Subtotal ({{ carritoService.total() }} und.)</span>
+      <span>${{ carritoService.subtotal() | number }}</span>
+    </div>
+    <div class="resumen-row">
+      <span>Envío</span>
+      <span>Por definir</span>
+    </div>
+    <div class="resumen-row">
+      <span>Pasarela de pago</span>
+      <span>Por definir</span>
+    </div>
+
+    <div class="resumen-total">
+      <span>Total estimado</span>
+      <span>${{ carritoService.subtotal() | number }}</span>
+    </div>
+
+    <button class="btn-checkout">Finalizar compra</button>
+    <button class="btn-volver" routerLink="/catalogo">← Volver al catálogo</button>
+  </div>
+
+</div>

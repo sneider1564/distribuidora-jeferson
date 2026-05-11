@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="nav-accent-bar"></div>
+  <div class="nav-content">
+    <div class="nav-logo" routerLink="/">Distribuidora <span>Jeferson</span></div>
+    <input class="nav-search" placeholder="Buscar productos..." />
+    <div class="nav-actions">
+      <button class="btn-cart" routerLink="/carrito">🛒 Carrito ({{ carritoService.total() }})</button>
+
+      @if (usuarioActivo) {
+        <button class="btn-contacts" routerLink="/perfil">{{ usuarioActivo.nombre }}</button>
+        <button class="btn-login" (click)="cerrarSesion()">Cerrar sesión</button>
+      } @else {
+        <button class="btn-contacts" routerLink="/login">Mi cuenta</button>
+        <button class="btn-login" routerLink="/login">Iniciar sesión</button>
+      }
+    </div>
+  </div>
+</nav>
+
+<router-outlet />

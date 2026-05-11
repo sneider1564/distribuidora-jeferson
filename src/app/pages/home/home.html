@@ -1,0 +1,81 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-circles"></div>
+  <div class="hero-text">
+    <h1>Productos de consumo masivo<br>directo a tu negocio</h1>
+    <p>Bebidas, snacks, dulces y más. Compra por unidad y recibe tu pedido sin moverte.</p>
+    <button class="btn-hero" routerLink="/catalogo">Ver catálogo</button>
+  </div>
+  <div class="hero-badges">
+    <div class="badge"><span class="num">+200</span><span class="lab">Productos</span></div>
+    <div class="badge"><span class="num">9</span><span class="lab">Empleados</span></div>
+    <div class="badge"><span class="num">2023</span><span class="lab">Fundada</span></div>
+  </div>
+</section>
+<!-- CATEGORÍAS -->
+<section class="section">
+  <div class="section-header">
+    <h2>Categorías rápidas</h2>
+    <button class="btn-more" routerLink="/catalogo">Ver más →</button>
+  </div>
+  <div class="cats-grid">
+    @for (cat of categorias; track cat.nombre) {
+      <div class="cat-card" [style.background]="cat.color" routerLink="/catalogo">
+        <span class="cat-emoji">{{ cat.emoji }}</span>
+        <span class="cat-nombre">{{ cat.nombre }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- MARCAS -->
+<div class="divider"></div>
+<section class="section">
+  <div class="section-header">
+    <h2>Marcas disponibles</h2>
+    <button class="btn-more" routerLink="/catalogo">Ver más →</button>
+  </div>
+  <div class="marcas-grid">
+    @for (marca of marcas; track marca) {
+      <div class="marca-card">{{ marca }}</div>
+    }
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<div class="divider"></div>
+<section class="about-section">
+  <div class="about-text">
+    <h2>¿Quiénes somos?</h2>
+    <p>Somos una microempresa bogotana fundada en 2023, dedicada a la distribución de productos de consumo masivo para negocios locales. Entregamos con puntualidad y compromiso.</p>
+    <button class="btn-know">Conoce más →</button>
+  </div>
+  <div class="about-stats">
+    <div class="stat-box"><span class="n">+2</span><span class="l">Años en el mercado</span></div>
+    <div class="stat-box"><span class="n">9</span><span class="l">Colaboradores</span></div>
+    <div class="stat-box"><span class="n">100%</span><span class="l">Compromiso</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-col">
+    <h4>Ubicación</h4>
+    <p>Bogotá D.C., Colombia</p>
+    <p>Cobertura: Zona norte y centro</p>
+  </div>
+  <div class="footer-col">
+    <h4>Contacto</h4>
+    <p>distribuidora&#64;jeferson.co</p>
+    <p>+57 300 000 0000</p>
+  </div>
+  <div class="footer-col">
+    <h4>Redes sociales</h4>
+    <div class="social-row">
+      <span class="social-dot">fb</span>
+      <span class="social-dot">ig</span>
+      <span class="social-dot">wa</span>
+    </div>
+  </div>
+</footer>
+<div class="footer-copy">© 2026 Distribuidora Jeferson — Todos los derechos reservados</div>

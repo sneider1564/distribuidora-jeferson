@@ -1,0 +1,50 @@
+<div class="catalogo-layout">
+
+  <!-- SIDEBAR FILTROS -->
+  <aside class="sidebar">
+    <h3>Filtros</h3>
+
+    <div class="filter-group">
+      <label>CATEGORÍA</label>
+      @for (cat of categorias; track cat) {
+        <span class="tag" [class.active]="categoriaActiva() === cat" (click)="seleccionarCategoria(cat)">
+          {{ cat }}
+        </span>
+      }
+    </div>
+
+    <div class="filter-group">
+      <label>DISPONIBILIDAD</label>
+      <span class="tag active">Disponible</span>
+      <span class="tag">Agotado</span>
+    </div>
+  </aside>
+
+  <!-- PRODUCTOS -->
+  <main class="productos-area">
+    <div class="productos-header">
+      <span>Mostrando <strong>{{ productosFiltrados().length }} productos</strong></span>
+      <input class="busqueda" placeholder="Buscar por nombre..." (input)="onBusqueda($event)" />
+    </div>
+
+    <div class="productos-grid">
+      @for (prod of productosFiltrados(); track prod.id) {
+        <div class="prod-card">
+          <div class="prod-img">{{ prod.emoji }}</div>
+          <div class="prod-info">
+            <div class="prod-nombre">{{ prod.nombre }}</div>
+            <div class="prod-precio">${{ prod.precio | number }}</div>
+            @if (prod.disponible) {
+              <div class="prod-status disponible">✓ Disponible</div>
+              <button class="btn-agregar" (click)="agregar(prod)">Agregar</button>
+            } @else {
+              <div class="prod-status agotado">✗ Agotado</div>
+              <button class="btn-agregar disabled" disabled>Agotado</button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </main>
+
+</div>

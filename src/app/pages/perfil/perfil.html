@@ -1,0 +1,46 @@
+<div class="perfil-layout">
+
+  <!-- CARD USUARIO -->
+  <div class="perfil-card">
+    <div class="avatar">CR</div>
+    <div class="usuario-nombre">{{ usuario.nombre }}</div>
+    <div class="usuario-negocio">{{ usuario.negocio }}</div>
+
+    <div class="info-row">
+      <span class="info-label">Correo</span>
+      <span class="info-valor">{{ usuario.correo }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Teléfono</span>
+      <span class="info-valor">{{ usuario.telefono }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Dirección</span>
+      <span class="info-valor">{{ usuario.direccion }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Miembro desde</span>
+      <span class="info-valor">{{ usuario.miembro }}</span>
+    </div>
+  </div>
+
+  <!-- HISTORIAL -->
+  <div class="pedidos-card">
+    <h2>Historial de pedidos</h2>
+
+    @for (pedido of pedidos; track pedido.id) {
+      <div class="pedido-item">
+        <div class="pedido-info">
+          <div class="pedido-id">Pedido {{ pedido.id }}</div>
+          <div class="pedido-fecha">{{ pedido.fecha }} · ${{ pedido.total | number }}</div>
+        </div>
+        <span class="pedido-estado" [class]="getEstadoClass(pedido.estado)">
+          {{ pedido.estado }}
+        </span>
+      </div>
+    }
+
+    <button class="btn-reorder" routerLink="/catalogo">Compra recurrente →</button>
+  </div>
+
+</div>

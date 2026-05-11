@@ -1,0 +1,142 @@
+.perfil-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  padding: 40px 80px;
+  min-height: calc(100vh - 64px);
+  background: #F5F5F5;
+}
+
+/* PERFIL CARD */
+.perfil-card {
+  background: white;
+  border: 1px solid #DDDDDD;
+  border-radius: 14px;
+  padding: 32px;
+  height: fit-content;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #C0392B;
+  color: #FFD966;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.usuario-nombre {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 4px;
+}
+
+.usuario-negocio {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 24px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #EEEEEE;
+  gap: 16px;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 13px;
+  color: #666666;
+}
+
+.info-valor {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1A1A;
+  text-align: right;
+}
+
+/* PEDIDOS CARD */
+.pedidos-card {
+  background: white;
+  border: 1px solid #DDDDDD;
+  border-radius: 14px;
+  padding: 32px;
+  height: fit-content;
+}
+
+.pedidos-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 24px;
+}
+
+.pedido-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #DDDDDD;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.pedido-id {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 4px;
+}
+
+.pedido-fecha {
+  font-size: 13px;
+  color: #666666;
+}
+
+.pedido-estado {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.estado-entregado {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.estado-camino {
+  background: #FFF8E1;
+  color: #F57F17;
+}
+
+.btn-reorder {
+  display: block;
+  margin-left: auto;
+  margin-top: 16px;
+  background: #C0392B;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-reorder:hover {
+  background: #A93226;
+}
