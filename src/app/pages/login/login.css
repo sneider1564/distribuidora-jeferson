@@ -316,3 +316,25 @@
 }
 
 .switch-tab span:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+  .login-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-izquierdo {
+    padding: 32px 24px;
+    min-height: auto;
+  }
+
+  .bienvenida h1 {
+    font-size: 26px;
+  }
+
+  .beneficios {
+    display: none;
+  }
+
+  .panel-derecho {
+    padding: 32px 24px;
+  }
+}

@@ -1,17 +1,12 @@
 /* HERO */
 .hero {
   background: #7B1A0E;
-  padding: 60px 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 280px;
+  padding: 60px 0;
   position: relative;
   overflow: hidden;
-}
-
-.hero-bg-img {
-  display: none;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
 }
 
 .hero-circles::before {
@@ -34,37 +29,9 @@
   z-index: 0;
 }
 
-.hero-bg-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.4;
-  z-index: 0;
-}
-
 .hero-text {
   z-index: 1;
-  max-width: 600px;
 }
-
-.hero-badges {
-  display: flex;
-  gap: 16px;
-  z-index: 1;
-}
-.hero-circles::before {
-  content: '';
-  position: absolute;
-  right: -60px; top: -60px;
-  width: 360px; height: 360px;
-  border-radius: 50%;
-  background: rgba(255, 217, 102, 0.07);
-}
-
-.hero-text { z-index: 1; max-width: 600px; }
 
 .hero-text h1 {
   font-size: 36px;
@@ -92,13 +59,8 @@
   cursor: pointer;
 }
 
-.hero-badges {
-  display: flex;
-  gap: 16px;
-  z-index: 1;
-}
-
-.badge {
+/* BADGES HERO */
+.badge-stat {
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 12px;
@@ -108,26 +70,30 @@
   flex-direction: column;
   gap: 6px;
   min-width: 100px;
+  z-index: 1;
 }
 
-.badge .num { font-size: 28px; font-weight: 600; color: #FFD966; }
-.badge .lab { font-size: 12px; color: rgba(255,255,255,0.45); }
+.badge-stat .num { font-size: 28px; font-weight: 600; color: #FFD966; }
+.badge-stat .lab { font-size: 12px; color: rgba(255,255,255,0.45); }
 
 /* SECCIONES */
 .section {
-  padding: 40px 80px;
-  background-image: url('/bodega_home.svg');
+  padding: 40px 0;
+  background-image: url('/distribuidora-jeferson/bodega_home.svg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   margin: 0;
 }
 
-.section-header h2 { 
-  font-size: 22px; 
-  font-weight: 600; 
-  color: white; 
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
+
+.section-header h2 { font-size: 22px; font-weight: 600; color: white; }
 
 .btn-more {
   font-size: 14px;
@@ -138,38 +104,9 @@
   font-weight: 500;
 }
 
-.cat-nombre { 
-  font-size: 14px; 
-  color: #1A1A1A; 
-  font-weight: 500; 
-}
-
-.marca-card {
-  border: 1px solid #DDDDDD;
-  border-radius: 10px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 500;
-  color: #1A1A1A;
-  background: rgba(255, 255, 255, 0.85);
-}
-.divider {
-  height: 0;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-}
+.divider { height: 0; background: transparent; margin: 0; padding: 0; }
 
 /* CATEGORÍAS */
-.cats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
 .cat-card {
   border-radius: 12px;
   border: 1px solid #DDDDDD;
@@ -180,19 +117,14 @@
   gap: 12px;
   cursor: pointer;
   transition: transform 0.2s;
+  height: 100%;
 }
 
 .cat-card:hover { transform: translateY(-4px); }
 .cat-emoji { font-size: 36px; }
-.cat-nombre { font-size: 14px; color: #1A1A1A; font-weight: 500; }
+.cat-nombre { font-size: 14px; color: #1A1A1A; font-weight: 500; text-align: center; }
 
 /* MARCAS */
-.marcas-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
 .marca-card {
   border: 1px solid #DDDDDD;
   border-radius: 10px;
@@ -203,21 +135,17 @@
   font-size: 16px;
   font-weight: 500;
   color: #666666;
-  background: #F5F5F5;
+  background: rgba(255,255,255,0.85);
 }
 
 /* ABOUT */
 .about-section {
   background: #7B1A0E;
-  padding: 50px 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  padding: 50px 0;
 }
 
 .about-text h2 { font-size: 24px; font-weight: 600; color: white; margin-bottom: 12px; }
-.about-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 24px; max-width: 480px; }
+.about-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 24px; }
 
 .btn-know {
   background: transparent;
@@ -229,30 +157,24 @@
   cursor: pointer;
 }
 
-.about-stats { display: flex; gap: 16px; }
-
 .stat-box {
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 10px;
-  padding: 20px 24px;
+  padding: 20px 12px;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  min-width: 110px;
 }
 
 .stat-box .n { font-size: 26px; font-weight: 600; color: #FFD966; }
-.stat-box .l { font-size: 12px; color: rgba(255,255,255,0.4); }
+.stat-box .l { font-size: 11px; color: rgba(255,255,255,0.4); }
 
 /* FOOTER */
 .footer {
   background: #4A0E07;
-  padding: 40px 80px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  padding: 40px 0;
 }
 
 .footer-col h4 { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 12px; }

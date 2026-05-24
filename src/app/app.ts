@@ -1,11 +1,12 @@
-import { Component, computed } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { CarritoService } from './services/carrito';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, DecimalPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -19,6 +20,6 @@ export class App {
 
   cerrarSesion() {
     localStorage.removeItem('usuarioActivo');
-    window.location.href = '/login';
+    window.location.href = '/distribuidora-jeferson/';
   }
 }

@@ -1,20 +1,90 @@
-<nav class="navbar">
-  <div class="nav-accent-bar"></div>
-  <div class="nav-content">
-    <div class="nav-logo" routerLink="/">Distribuidora <span>Jeferson</span></div>
-    <input class="nav-search" placeholder="Buscar productos..." />
-    <div class="nav-actions">
-      <button class="btn-cart" routerLink="/carrito">🛒 Carrito ({{ carritoService.total() }})</button>
-
+<nav class="navbar navbar-expand-lg" style="background:#C0392B; border-top: 4px solid #FFD966;">
+  <div class="container-fluid px-3">
+    <a class="navbar-brand text-white fw-normal" routerLink="/">
+      Distribuidora <span style="color:#FFD966; font-weight:700;">Jeferson</span>
+    </a>
+    <div class="d-flex align-items-center gap-2 ms-auto">
+      <input class="form-control form-control-sm d-none d-md-block"
+        placeholder="Buscar productos..."
+        style="max-width:200px; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:white; border-radius:20px;"/>
+      <button class="btn btn-sm" (click)="carritoService.abrirCarrito()"
+        style="border:1px solid #FFD966; color:#FFD966; border-radius:20px; white-space:nowrap;">
+        🛒 ({{ carritoService.total() }})
+      </button>
       @if (usuarioActivo) {
-        <button class="btn-contacts" routerLink="/perfil">{{ usuarioActivo.nombre }}</button>
-        <button class="btn-login" (click)="cerrarSesion()">Cerrar sesión</button>
+        <button class="btn btn-sm" routerLink="/perfil"
+          style="border:1px solid rgba(255,255,255,0.3); color:white; border-radius:20px;">
+          {{ usuarioActivo.nombre }}
+        </button>
+        <button class="btn btn-sm fw-bold" (click)="cerrarSesion()"
+          style="background:#FFD966; color:#7B1A0E; border-radius:20px;">
+          Salir
+        </button>
       } @else {
-        <button class="btn-contacts" routerLink="/login">Mi cuenta</button>
-        <button class="btn-login" routerLink="/login">Iniciar sesión</button>
+        <button class="btn btn-sm" routerLink="/login"
+          style="border:1px solid rgba(255,255,255,0.3); color:white; border-radius:20px;">
+          Mi cuenta
+        </button>
+        <button class="btn btn-sm fw-bold" routerLink="/login"
+          style="background:#FFD966; color:#7B1A0E; border-radius:20px;">
+          Iniciar sesión
+        </button>
       }
     </div>
   </div>
 </nav>
 
 <router-outlet />
+
+<!-- OVERLAY -->
+@if (carritoService.carritoAbierto()) {
+  <div class="carrito-overlay" (click)="carritoService.cerrarCarrito()"></div>
+}
+
+<!-- CARRITO SIDEBAR -->
+<div class="carrito-sidebar" [class.abierto]="carritoService.carritoAbierto()">
+  <div class="carrito-sidebar-header">
+    <h5>Mi carrito</h5>
+    <button class="btn-cerrar" (click)="carritoService.cerrarCarrito()">✕</button>
+  </div>
+
+  <div class="carrito-sidebar-body">
+    @if (carritoService.getItems().length === 0) {
+      <div class="carrito-vacio-sidebar">
+        <span>🛒</span>
+        <p>Tu carrito está vacío</p>
+      </div>
+    } @else {
+      @for (item of carritoService.getItems(); track item.producto.id) {
+        <div class="carrito-sidebar-item">
+          <div class="item-sidebar-img">{{ item.producto.emoji }}</div>
+          <div class="item-sidebar-info">
+            <div class="item-sidebar-nombre">{{ item.producto.nombre }}</div>
+            <div class="item-sidebar-precio">${{ item.producto.precio | number }}</div>
+            <div class="item-sidebar-cantidad">
+              <button (click)="carritoService.disminuir(item.producto.id)">−</button>
+              <span>{{ item.cantidad }}</span>
+              <button (click)="carritoService.aumentar(item.producto.id)">+</button>
+            </div>
+          </div>
+          <button class="btn-eliminar-item" (click)="carritoService.eliminar(item.producto.id)">🗑</button>
+        </div>
+      }
+    }
+  </div>
+
+  @if (carritoService.getItems().length > 0) {
+    <div class="carrito-sidebar-footer">
+      <div class="carrito-total-row">
+        <span>Total estimado</span>
+        <strong>${{ carritoService.subtotal() | number }}</strong>
+      </div>
+      <button class="btn-finalizar" routerLink="/carrito" (click)="carritoService.cerrarCarrito()">
+        Finalizar compra →
+      </button>
+      <button class="btn-seguir" (click)="carritoService.cerrarCarrito()">
+        Seguir comprando
+      </button>
+    </div>
+  }
+</div>
