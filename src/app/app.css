@@ -234,9 +234,4 @@ body {
     width: 100%;
     max-width: 100vw;
   }
-  .navbar-logo {
-  height: 30px;
-  width: auto;
-  object-fit: contain;
-}
 }
