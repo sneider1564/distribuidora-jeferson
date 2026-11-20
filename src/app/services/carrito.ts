@@ -29,7 +29,13 @@ export class CarritoService {
   abrirCarrito() { this.carritoAbierto.set(true); }
   cerrarCarrito() { this.carritoAbierto.set(false); }
 
+  tieneProducto(id: number): boolean {
+    return this.items().some(i => i.producto.id === id);
+  }
+
   agregar(producto: Producto) {
+    if (!producto.disponible || producto.precio <= 0) return;
+
     const actual = this.items();
     const existe = actual.find(i => i.producto.id === producto.id);
     if (existe) {
